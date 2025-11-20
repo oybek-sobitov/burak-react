@@ -14,34 +14,37 @@ const activeUsers = [
 ];
 
 export default function ActiveUsers() {
-    return (
-    <div className={"active-users-frame"}>
-        <Container>
-            <Stack className={"main"}>
-                <Box className={"category-title"}>Active Users</Box>
-                <Stack className={"cards-frame"}>
-                    <CssVarsProvider>
-                        {activeUsers.length !==0 ? (
-                            activeUsers.map((ele, index) => {
-                        return (
-                                <Card key={index} variant="outlined" className={"card"}>
-                                    <CardOverflow>
-                                        <AspectRatio ratio="1">
-                                            <img src={ele.memberImage} alt="" />
-                                        </AspectRatio>
-                                        <Typography className={"member-nickname"}>
-                                                    {ele.memberNick}
-                                        </Typography>
-                                    </CardOverflow>               
-                                </Card>
-                        ); 
-                    })) : (
-                            <Box className="no-data">No Active Users!</Box>
-                        )}
-                    </CssVarsProvider>
-                </Stack>
-            </Stack>
-        </Container>
+  return (
+    <div className="active-users-frame">
+      <Container>
+        <Stack className="main">
+          <Box className="category-title">Active Users</Box>
+          <Stack className="cards-frame">
+            <CssVarsProvider>
+              {activeUsers.length !== 0 ? (
+                activeUsers.map((user, index) => (
+                  <Card key={index} className="card">
+                    <CardOverflow>
+                      <AspectRatio component="div" ratio={1}>
+                        <img
+                          src={user.memberImage}
+                          alt={user.memberNick}
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                      </AspectRatio>
+                    </CardOverflow>
+                    <CardOverflow variant="plain">
+                      <Typography className="member-nickname">{user.memberNick}</Typography>
+                    </CardOverflow>
+                  </Card>
+                ))
+              ) : (
+                <Box className="no-data">No Active Users!</Box>
+              )}
+            </CssVarsProvider>
+          </Stack>
+        </Stack>
+      </Container>
     </div>
-    );
+  );
 }
