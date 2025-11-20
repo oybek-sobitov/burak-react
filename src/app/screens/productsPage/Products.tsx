@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -25,7 +25,19 @@ export default function Products(){
     <div className={"products"}>
         <Container>
             <Stack flexDirection={"column"} alignItems={"center"}>
-                <Stack className={"avatar-big-box"}>  
+                <Stack className={"avatar-big-box"}>
+                    <Box className="category-title">Burak Restaurant</Box>
+                    <Box className="search-box">
+                        <TextField
+                                id="outlined-basic"
+                                variant="outlined"
+                                className="text-field"
+                                placeholder="Type here"
+                            />
+                            <Button variant="contained" className="search-button">
+                                Search <SearchIcon className="search-icon" />
+                            </Button>
+                    </Box>
                 </Stack>
 
                 <Stack className={"dishes-filter-section"}>
@@ -69,7 +81,7 @@ export default function Products(){
                             <Button variant={"contained"} color={"secondary"}>
                                 Salad
                             </Button>
-                            <Button variant={"contained"} color={"secondary"}>
+                            <Button variant={"contained"} color={"primary"}>
                                 Dish
                             </Button>
                         </div>
@@ -81,7 +93,7 @@ export default function Products(){
                                 return (
                                     <Stack key={index} className={"product-card"}>
                                         <Stack 
-                                        className={"producst-img"} 
+                                        className={"product-img"} 
                                         sx={{ backgroundImage: `url(${product.imagePath})`}}>
                                             <div className={"product-sale"}>Normal size</div>
                                             <Button className={"shop-btn"}>
@@ -144,7 +156,13 @@ export default function Products(){
                         <img src={"/img/gurme.webp"} />
                     </Box>
                     <Box className={"review-box"}>
-                        {/*  */}
+                        <img src={"/img/seafood.webp"} />
+                    </Box>
+                    <Box className={"review-box"}>
+                        <img src={"/img/sweets.webp"} />
+                    </Box>
+                    <Box className={"review-box"}>
+                        <img src={"/img/doner.webp"} />
                     </Box>
                 </Stack>
              </Container> 
@@ -155,12 +173,12 @@ export default function Products(){
                 <Stack className={"address-area"}>
                     <Box className={"title"}>Our adsress</Box>
                         <iframe
-                            style={{ marginTop: "60px" }}
-                            src=""
-                            width="1320"
-                            height="500"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
+                        style={{ marginTop: "60px" }}
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101202.52524817457!2d126.89173964558682!3d37.56498353964936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca28b61c565cd%3A0x858aedb4e4ea83eb!2z0KHQtdGD0Ls!5e0!3m2!1sru!2skr!4v1737713569639!5m2!1sru!2skr"
+                        width="1320"
+                        height="500"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                 </Stack>
             </Container>
         </div> 
