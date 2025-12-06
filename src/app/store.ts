@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import HomePage from "./screens/homePage";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    HomePage
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
