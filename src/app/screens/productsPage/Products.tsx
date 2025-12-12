@@ -324,10 +324,10 @@ export default function Products(){
         <div className={"address"}>
             <Container>
                 <Stack className={"address-area"}>
-                    <Box className={"title"}>Our adsress</Box>
+                    <Box className={"title"}>Our Address</Box>
                         <iframe
                         style={{ marginTop: "60px" }}
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101202.52524817457!2d126.89173964558682!3d37.56498353964936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca28b61c565cd%3A0x858aedb4e4ea83eb!2z0KHQtdGD0Ls!5e0!3m2!1sru!2skr!4v1737713569639!5m2!1sru!2skr"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7251633.363402964!2d17.168600559296397!3d42.376792859382256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab716d26c9505%3A0xaeb6cf03050318fe!2sCznBurak%20Restaurant!5e0!3m2!1sen!2skr!4v1765560343825!5m2!1sen!2skr"
                         width="1320"
                         height="500"
                         referrerPolicy="no-referrer-when-downgrade"

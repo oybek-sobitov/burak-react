@@ -5,6 +5,8 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Divider from "../../components/divider";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import CallIcon from '@mui/icons-material/Call';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -85,8 +87,14 @@ export default function ChosenProduct() {
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
             <strong className={"product-name"}>{chosenProduct.productName}</strong>
-            <span className={"resto-name"}>{restaurant?.memberNick}</span>
-            <span className={"resto-name"}>{restaurant?.memberPhone}</span>
+            <div className="resto-name-icon">
+              <RestaurantIcon className="icons"/>
+              <span className={"resto-name"}>{restaurant?.memberNick}</span>
+            </div>
+            <div className="resto-name-icon">
+              <CallIcon className="icons"/>
+              <span className={"resto-name"}>{restaurant?.memberPhone}</span>
+            </div>
             <Box className={"rating-box"}>
               <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
               <div className={"evaluation-box"}>
