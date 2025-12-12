@@ -1,5 +1,6 @@
 import axios from "axios";
 import { serverAPi } from "../../lib/config";
+import { Member } from "../../lib/types/member";
 
 class MemberService {
     private readonly path: string;
@@ -8,7 +9,7 @@ class MemberService {
         this.path = serverAPi;
     }
 
-    public async getTopUsers(): Promise<[]> {
+    public async getTopUsers(): Promise<Member[]> {
         try {
             const url = this.path + "/member/top-users";
             const result = await axios.get(url);
@@ -21,6 +22,22 @@ class MemberService {
         }
 
     }
+
+    public async getRestaurant(): Promise<Member> {
+        try {
+            const url = this.path + "/member/restaurant";
+            const result = await axios.get(url);
+            console.log("getRestaurant:", result)
+            const restaurant: Member = result.data
+            return restaurant
+        } catch (err) {
+            console.log("Error, getTopUsers:", err);
+            throw err;
+        }
+
+    }
+
+
 }
 
 export default MemberService;
