@@ -14,7 +14,7 @@ import { serverAPi } from "../../../lib/config";
 import { Product } from "../../../lib/types/product";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 
-// REDUX SLICE & SproductCTOR
+// REDUX SLICE & SELECTOR
 const newDishesRetriever = createSelector(
   retrieveNewDishes, 
   (newDishes) => ({newDishes})
