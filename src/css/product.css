@@ -90,13 +90,39 @@
   margin-left: 925px;
 }
 
+.products-page .products .dishes-filter-box .order {
+  min-width: auto;
+  margin-right: 15px;
+  margin-bottom: 25px;
+  margin-left: 3px;
+}
+
 .products-page .products .avatar-big-box .search-box .search-button {
     border-radius: 20px;
+}
+
+.products-page .list-category-section {
+    position: relative; /* This makes the sidebar stick to this box, not the page */
+    min-height: 600px;  /* CRITICAL: Prevents page collapse when "No Products" */
+}
+
+.products-page .product-category {
+    position: absolute;
+    top: 468px;
+    left: 0px;
+    transform: rotate(-90deg) translateY(50%);
+    transform-origin: left center; 
+    z-index: 10;
 }
 
 .products-page .list-category-section .category-main {
  display: flex;
  flex-direction: row;
+}
+
+.products-page .product-category .category-main button {
+  min-width: auto;
+  margin-right: 15px;
 }
 
 .products-page .list-category-section .product-wrapper {
@@ -175,7 +201,7 @@
     width: 250px;
     height: 361px;
     margin-left: 48px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .products-page .products .product-sale {
@@ -203,7 +229,7 @@
 .products-page .products .product-card .product-img {
   width: 273px;
   height: 275px;
-  border-radius: 0 50px 0 0;
+  border-radius: 0 35px 0 0;
   position: relative;
   margin-top: 20px;
   font-family: "Poppins";
@@ -312,6 +338,8 @@
   font-size: 30px;
   line-height: 34px;
   color: #e3c08d;
+  margin-left: 300px;
+  margin-right: 300px;
 }
 
 .products-page .products .product-img:hover .shop-btn {
@@ -424,20 +452,6 @@ display: flex;
   text-align: left;
   color: rgba(52, 52, 52, 1);
 }
-
-.products-page .product-category .category-main button {
-  min-width: auto;
-  margin-right: 10px;
-}
-
-.products-page .product-category {
-    position: absolute;
-    top: 730px;
-    transform: rotate(-90deg) translateY(50%);
-    transform-origin: left top;
-
-}
-
 
 /* CHOSEN PRODUCST */
 
