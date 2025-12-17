@@ -33,13 +33,14 @@ export default function FinishedOrders() {
                       <img
                         src={imagePath}
                         className={"order-dish-img"}
+                        alt=""
                       />
                       <p className={"title-dish"}>{product.productName}</p>
                       <Box className={"price-box"}>
                         <p>${item.itemPrice}</p>
-                        <img src={"/icons/close.svg"} />
+                        <img src={"/icons/close.svg"} alt=""/>
                         <p>{item.itemQuantity}</p>
-                        <img src={"/icons/pause.svg"} />
+                        <img src={"/icons/pause.svg"} alt=""/>
                         <p style={{ marginLeft: "15px" }}>
                           ${item.itemQuantity * item.itemPrice}</p>
                       </Box>
@@ -52,12 +53,13 @@ export default function FinishedOrders() {
                         <Box className={"box-total"}>
                             <p>Product price</p>
                             <p>${order.orderTotal - order.orderDelivery}</p>
-                            <img src={"/icons/plus.svg"} style={{ marginLeft: "20px" }} />
+                            <img src={"/icons/plus.svg"} style={{ marginLeft: "20px" }} alt=""/>
                             <p>Delivery cost</p>
                             <p>${order.orderDelivery}</p>
                             <img
                             src={"/icons/pause.svg"}
                             style={{ marginLeft: "20px" }}
+                            alt=""
                             />
                             <p>Total</p>
                             <p>${order.orderTotal}</p>
@@ -73,6 +75,7 @@ export default function FinishedOrders() {
                         <img
                         src={"/icons/noimage-list.svg"}
                         style={{ width: 300, height: 300 }}
+                        alt=""
                         />
                     </Box>
         ))}
