@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductsPage } from "../../../lib/types/screen";
+import { ProductsPageState } from "../../../lib/types/screen";
 
-const initialState: ProductsPage = {
+const initialState: ProductsPageState = {
     restaurant: null,
     chosenProduct: null,
     products: []

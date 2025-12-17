@@ -8,7 +8,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
-import { serverAPi } from "../../../lib/config";
+import { Messages, serverAPi } from "../../../lib/config";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../../hooks/useGlobal";
+import OrderService from "../../services/OrderService";
 
 interface BasketProps {
   cartItems: CartItem[];
@@ -20,7 +23,7 @@ interface BasketProps {
 
 export default function Basket(props: BasketProps) {
   const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = props;
-  const authMember = null;
+  const {authMember} = useGlobals();
   const history = useHistory();
 
   const itemsPrice = cartItems.reduce(
@@ -40,6 +43,26 @@ export default function Basket(props: BasketProps) {
     setAnchorEl(null);
   };
 
+  const proceedOrderHandler = async() => {
+    try {
+      handleClose();
+      if (!authMember) throw new Error(Messages.error2);
+
+      const order = new OrderService();
+      await order.createOrder(cartItems);
+
+      onDeleteAll();
+
+      history.push("/orders")
+
+      // REFRESH VIA CONTEX
+    }
+    catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  }
+
   return (
     <Box className={"hover-line"}>
       <IconButton
@@ -51,7 +74,7 @@ export default function Basket(props: BasketProps) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} />
+          <img src={"/icons/shopping-cart.svg"} alt=""/>
         </Badge>
       </IconButton>
       <Menu
@@ -117,7 +140,7 @@ export default function Basket(props: BasketProps) {
                       onClick={() => onDelete(item)}
                     />
                   </div>
-                  <img src={imagePath} className={"product-img"} />
+                  <img src={imagePath} className={"product-img"} alt=""/>
                   <span className={"product-name"}>{item.name}</span>
                   <p className={"product-price"}>${item.price} x {item.quantity}</p>
                   <Box sx={{ minWidth: 120 }}>
@@ -140,7 +163,11 @@ export default function Basket(props: BasketProps) {
           {cartItems.length !== 0 ? (
             <Box className={"basket-order"}>
             <span className={"price"}>Total: ${totalPrice} ({itemsPrice} + {shippingPrice})</span>
-            <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+            <Button 
+            startIcon={<ShoppingCartIcon />} 
+            variant={"contained"}
+            onClick={proceedOrderHandler}
+            >
               Order
             </Button>
           </Box>) : ("")}
