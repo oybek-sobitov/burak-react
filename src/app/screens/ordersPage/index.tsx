@@ -16,6 +16,8 @@ import OrderService from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobal";
 import { useHistory } from "react-router-dom";
 import "../../../css/order.css";
+import { serverAPi } from "../../../lib/config";
+import { MemberType } from "../../../lib/enums/member.enum";
 
 // REDUX SLICE & SELECTOR
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -93,28 +95,32 @@ export default function OrdersPage() {
               <Box className={"member-box"}>
                 <div className={"order-user-img"}>
                   <img
-                    src={"/icons/default-user.svg"}
+                    src={authMember?.memberImage 
+                        ? `${serverAPi}/${authMember.memberImage}` 
+                        : "/icons/default-user.svg"}
                     className={"order-user-avatar"}
                     alt=""
                   />
                   <div className={"order-user-icon-box"}>
                     <img
-                      src={"/icons/user-badge.svg"}
+                      src={authMember?.memberType === MemberType.RESTAURANT ? "/icons/restaurant.svg" : "/icons/user-badge.svg"}
                       className={"order-user-prof-img"}
                       alt=""
                     />
                   </div>
                 </div>
                 <div className="name-prof-info">
-                  <span className={"order-user-name"}>Martin</span>
-                  <span className={"order-user-prof"}>USER</span>
+                  <span className={"order-user-name"}>{authMember?.memberNick}</span>
+                  <span className={"order-user-prof"}>{authMember?.memberType}</span>
                 </div>
               </Box>
               <Box className={"liner"}></Box>
               <Box className={"order-user-adress"}>
                 <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", gap: "10px"}}>
                   <LocationOnIcon/>
-                  <p>South Korea, Busan</p>
+                  <p>{authMember?.memberAddress 
+                  ? authMember.memberAddress 
+                  : "Do not exist"}</p>
                 </div>
               </Box>
 
